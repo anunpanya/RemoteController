@@ -40,6 +40,8 @@
 			var e = document.getElementById('remote');
 			e.innerHTML = "";
 		}
+
+		//if(msg=='new') msg+="/"+thingsrc;
 		microgear.chat(target,msg);
 		console.log(msg);
 	}
@@ -65,7 +67,7 @@
 			e.innerHTML = "";
 
 			for (var i=0; i<m.length; i++) {
-				if(i==0){ 
+				if(i==0||m[i]=='default'){ 
 					send('ls:/'+m[i]); 
 					thingsrc = m[i];
 					document.getElementById("dropdownMenu").innerHTML = thingsrc;
@@ -76,7 +78,7 @@
 			document.getElementById("statusRemote").style.display = "block";
 		}
 
-		if (topic=='/'+appid+'/irremote/new/'+thingsrc) {
+		if (topic=='/'+appid+'/irremote/new') {
 			var newname = prompt('Name your new button');
 			if(newname){
 				send('mv:'+msg+':'+'/'+thingsrc+'/'+newname);
