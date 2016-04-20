@@ -56,7 +56,7 @@
 			e.innerHTML = "";
 
 			for (var i=0; i<m.length; i++) {
-				e.innerHTML += "<div class=\"col-xs-12 col-md-6\" style=\"padding:10px\"><a class=\"btn btn-primary col-xs-12\" onclick=\"send('ir:/"+thingsrc+"/"+m[i]+"')\">"+m[i]+"</a></div>";
+				e.innerHTML += "<div class=\"col-xs-6 col-md-6\" style=\"padding:10px\"><a class=\"btn btn-primary col-xs-12\" onclick=\"send('ir:/"+thingsrc+"/"+m[i]+"')\">"+m[i]+"</a></div>";
 			}
 
 			document.getElementById("statusRemote").style.display = "block";
@@ -106,10 +106,10 @@
 a { text-decoration: none; cursor:pointer;}
 .btn-primary, .btn-success {
     padding: 15px;
-	font-size:72px;
+	font-size:56px;
 }
 .dropdown, .btn, button, li {
-	font-size:72px;
+	font-size:56px;
 }
 #body {
 	padding:10px;
