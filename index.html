@@ -14,7 +14,7 @@
 	const target = 'irremote';
 
     var appid, appkey, appsecret;
-	var thingsrc;
+	var thingsrc = 'default';
 
     var a = location.hash.substring(1).split(':');
     if (a.length==3) {
@@ -34,13 +34,13 @@
 
   	function send(msg) {
 		var m = msg.split('/');
-		if(m.length==2 && m[0]!='' && m[1]!=''){
+/*		if(m.length==2 && m[0]!='' && m[1]!=''){
 			document.getElementById("dropdownMenu").innerHTML = m[1];
 			thingsrc = m[1];
 			var e = document.getElementById('remote');
 			e.innerHTML = "";
 		}
-
+*/
 		//if(msg=='new') msg+="/"+thingsrc;
 		microgear.chat(target,msg);
 		console.log(msg);
@@ -58,8 +58,10 @@
 			for (var i=0; i<m.length; i++) {
 				e.innerHTML += "<div class=\"col-xs-12 col-md-6\" style=\"padding:10px\"><a class=\"btn btn-primary col-xs-12\" onclick=\"send('ir:/"+thingsrc+"/"+m[i]+"')\">"+m[i]+"</a></div>";
 			}
-		}
 
+			document.getElementById("statusRemote").style.display = "block";
+		}
+/*
 		if (topic=='/'+appid+'/irremote/ls/') {
 			var m = msg.split(';');
 
@@ -77,7 +79,7 @@
 			
 			document.getElementById("statusRemote").style.display = "block";
 		}
-
+*/
 		if (topic=='/'+appid+'/irremote/new') {
 			var newname = prompt('Name your new button');
 			if(newname){
@@ -91,7 +93,7 @@
 
 	microgear.on('connected', function() {
 		microgear.subscribe('/irremote/#');
-		send('ls:/');
+		send('ls:/default');
 	    document.getElementById("data").innerHTML = "<FONT color=#00BB00>ONLINE</FONT>";
 	});
 
@@ -123,7 +125,7 @@ a { text-decoration: none; cursor:pointer;}
 	<div id="data" align="right"><FONT COLOR=#DDDDDD>OFFLINE</FONT></div>
 	<font style="font-size: 72px;font-weight: bold;">Cloud Remote Controller</font>
 	<div id="statusRemote">
-		<div class="row">
+<!--		<div class="row">
 			<div class="col-xs-4" style="padding:10px;">
 				<div class="dropdown">
 					<button class="btn btn-default col-xs-12 dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -137,7 +139,7 @@ a { text-decoration: none; cursor:pointer;}
 				<a class="btn btn-default col-xs-12" onclick="">Create Remote</a>
 			</div>
 		</div>
-
+-->
 		<div class="row">
 			<div class="col-xs-4" style="padding:10px;"><a class="btn btn-success col-xs-12" onclick="send('new')">+</a></div>
 			<div class="col-xs-8">
